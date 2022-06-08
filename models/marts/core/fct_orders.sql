@@ -1,3 +1,5 @@
+{{ config( materialized="table" ) }}
+
 with orders as  (
 
     select * from {{ ref('stg_orders' )}}
@@ -18,7 +20,7 @@ order_payments as (
 
     from payments
     group by 1
-    
+
 ),
 
 final as (

@@ -1,3 +1,5 @@
+{{ config( materialized="table" ) }}
+
 with customers as (
 
     select * from {{ ref('stg_customers')}}
@@ -35,7 +37,7 @@ final as (
         customer_orders.lifetime_value
     from customers
     left join customer_orders using (customer_id)
-    
+
 )
 
 select * from final
